@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'books-app';
+  number = 0;
+
+  increment() {
+    this.number = this.number + 1;
+  }
+
+  reset() {
+    this.number = 0;
+  }
 }
