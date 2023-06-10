@@ -1,9 +1,8 @@
-<div class="flex flex-col items-center">
-  <span class="text-yellow-500 py-7">Mi contador</span>
-  <span class="text-6xl font-bold text-cyan-50">{{ number }}</span>
-  <br><br>
-  <div class="flex flex-col content-center items-center gap-7">
-    <span (click)="increment()" class="text-white p-2 px-8 rounded-xl bg-yellow-500  hover:bg-yellow-700 cursor-pointer">Incrementar</span>
-    <span (click)="reset()" class="text-white hover:underline cursor-pointer">Reset</span>
+<div class="flex flex-row items-center h-full">
+  <app-sidebar class="h-full "></app-sidebar>
+
+  <div class="flex flex-col h-full">
+    <app-navbar></app-navbar>
+    <router-outlet class="flex"></router-outlet>
   </div>
 </div>
