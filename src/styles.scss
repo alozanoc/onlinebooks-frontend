@@ -7,6 +7,6 @@ html, body, .app-root {
   @apply w-full h-full;
 }
 
-body {
 
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

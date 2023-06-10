@@ -14,7 +14,7 @@ export class BookService {
 
   }
 
-  public async search(q: string): Promise<SearchResponse> {
-    return firstValueFrom(this.http.get<SearchResponse>(`${environment.API_URL}/api/books/search?title=${q}`))
+  public async search(q: string, currentPage: number, pageSize: number): Promise<SearchResponse> {
+    return firstValueFrom(this.http.get<SearchResponse>(`${environment.API_URL}/api/books/search?title=${q}&page=${currentPage}&pageSize=${pageSize}`))
   }
 }

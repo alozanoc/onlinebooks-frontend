@@ -4,11 +4,20 @@
       <span *ngIf="q">Resultados para {{ q }}</span>
       <span *ngIf="!q">Resultados: </span>
     </div>
-    <input type="text" [(ngModel)]="q" (ngModelChange)="search()" class="border border-amber-500">
-  </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Outline form field</mat-label>
+        <input #inputelement matInput placeholder="Placeholder" [(ngModel)]="q" (keyup.enter)="search()">
+        <mat-icon matSuffix class="cursor-pointer" (click)="search()">search</mat-icon>
+        <mat-hint>Ingrese el término a buscar</mat-hint>
+      </mat-form-field>
+    </div>
 
+  </div>
+  <div class="text-center items-center p-10 w-full">
+    <span *ngIf="!books.content || books.content.length == 0">No hay resultados</span>
+  </div>
   <div class="flex flex-wrap gap-3">
-    <div *ngIf="!books.content">No hay resultados</div>
     <div *ngFor="let book of books.content; index as idx" class="border border-solid border-gray-100 shadow w-1/3 rounded overflow-hidden">
       <div class="flex flex-col">
         <img src="https://loremflickr.com/640/360" alt="å">
@@ -18,5 +27,13 @@
         </div>
       </div>
     </div>
+  </div>
+  <div>
+    <mat-paginator [length]="page.totalCount"
+                   [pageSize]="page.pageSize"
+                   [pageIndex]="page.currentPage"
+                   (page)="changePage($event)"
+                   aria-label="Select page">
+    </mat-paginator>
   </div>
 </div>

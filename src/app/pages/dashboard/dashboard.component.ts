@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BookService } from "../../services/book.service";
 import { SearchResponse } from "../../services/book.interfaces";
+import { MatInput } from "@angular/material/input";
+import { PageEvent } from "@angular/material/paginator";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +15,10 @@ export class DashboardComponent implements OnInit {
 
   q: string = '';
 
+  page = {currentPage: 0, pageSize: 2, totalCount: 0}
+
+  @ViewChild("inputelement") input!: ElementRef;
+
   constructor(private bookService: BookService) {
   }
 
@@ -22,7 +28,14 @@ export class DashboardComponent implements OnInit {
   }
 
   public async search() {
-    this.books = await this.bookService.search(this.q);
+    this.books = await this.bookService.search(this.q, this.page.currentPage, this.page.pageSize);
+    this.page.totalCount = this.books.totalElements;
+    this.input.nativeElement.select();
   }
 
+  changePage($event: PageEvent) {
+    console.log($event)
+    this.page.currentPage = $event.pageIndex;
+    this.search();
+  }
 }
