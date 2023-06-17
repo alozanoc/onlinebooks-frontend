@@ -16,6 +16,13 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { LoginComponent } from './pages/login/login.component';
+import { IntranetSkeletonComponent } from './skeleton/intranet-skeleton/intranet-skeleton.component';
+import { LandingComponent } from './pages/landing/landing.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { GeneralSettingsComponent } from './pages/settings/components/general-settings/general-settings.component';
+import { ProfileSettingsComponent } from './pages/settings/components/profile-settings/profile-settings.component';
+import { SidebarSettingsComponent } from './pages/settings/components/sidebar-settings/sidebar-settings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,14 @@ import { MatPaginatorModule } from "@angular/material/paginator";
     SidebarComponent,
     NavbarComponent,
     DashboardComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent,
+    IntranetSkeletonComponent,
+    LandingComponent,
+    SettingsComponent,
+    GeneralSettingsComponent,
+    ProfileSettingsComponent,
+    SidebarSettingsComponent
   ],
   imports: [
     BrowserModule,
