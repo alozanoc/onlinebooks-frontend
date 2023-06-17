@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { BookService } from "../../services/book.service";
-import { SearchResponse } from "../../services/book.interfaces";
+import { BookApi } from "../../services/api/book-api.service";
+import { SearchResponse } from "../../services/api/book.interfaces";
 import { MatInput } from "@angular/material/input";
 import { PageEvent } from "@angular/material/paginator";
 
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild("inputelement") input!: ElementRef;
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookApi) {
   }
 
   public async ngOnInit() {
