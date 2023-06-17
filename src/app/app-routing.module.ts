@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { AboutComponent } from "./pages/about/about.component";
@@ -8,6 +8,7 @@ import { LandingComponent } from "./pages/landing/landing.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { GeneralSettingsComponent } from "./pages/settings/components/general-settings/general-settings.component";
 import { ProfileSettingsComponent } from "./pages/settings/components/profile-settings/profile-settings.component";
+import { AuthenticationService } from "./services/authentication/authentication.service";
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -18,7 +19,10 @@ const routes: Routes = [
           { path: 'general', component: GeneralSettingsComponent },
           { path: 'profile', component: ProfileSettingsComponent },
         ] }
-    ] },
+    ], canActivate: [() => {
+          return inject(AuthenticationService).isAuthenticated()
+    }]
+  },
   { path: 'login', component: LoginComponent }
 ];
 

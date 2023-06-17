@@ -4,12 +4,14 @@
     <div class="mt-4 bg-white shadow-md rounded-lg text-left">
       <div class="h-2 bg-blue-400 rounded-t-md"></div>
       <div class="px-8 py-6 ">
+        <div *ngIf="message !== ''" class="bg-red-400 text-red-800 p-2 rounded mb-2">{{ message }}</div>
+
         <label class="block font-semibold"> Username or Email </label>
-        <input type="text" placeholder="Email" class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+        <input [(ngModel)]="username" type="text" placeholder="Email" class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
         <label class="block mt-3 font-semibold"> Username or Email </label>
-        <input type="password" placeholder="Password" class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+        <input [(ngModel)]="password" type="password" placeholder="Password" class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
         <div class="flex justify-between items-baseline">
-          <button routerLink="/intranet/" type="submit" class="mt-4 bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 ">Login</button>
+          <button (click)="login()" type="submit" class="mt-4 bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 ">Login</button>
           <a href="#" class="text-sm hover:underline">Forgot password?</a>
         </div>
       </div>
